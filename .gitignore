@@ -1,0 +1,8 @@
+.env
+.venv/
+.idea/
+__pycache__/
+*.pyc
+testpilot.db
+testpilot.db-shm
+testpilot.db-wal

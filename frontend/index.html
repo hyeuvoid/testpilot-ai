@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>AI测试用例生成平台</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <main class="container">
+        <header>
+            <p class="eyebrow">TESTPILOT AI</p>
+            <h1>AI软件需求分析与测试用例生成平台</h1>
+            <p class="description">
+                输入软件需求，自动识别需求点、歧义和假设，
+                并生成结构化测试用例。
+            </p>
+        </header>
+
+        <section class="input-panel">
+            <form id="requirement-form">
+                <label for="requirement">
+                    软件需求
+                </label>
+                <div class="document-upload">
+    <input
+        id="requirement-file"
+        type="file"
+        accept=".txt,.docx,.pdf"
+        hidden
+    >
+
+    <label
+        for="requirement-file"
+        class="document-upload-button"
+    >
+        选择需求文档
+    </label>
+
+    <span
+        id="selected-file-name"
+        class="selected-file-name"
+    >
+        支持 TXT、DOCX、PDF，最大 5MB
+    </span>
+</div>
+
+                <textarea
+                    id="requirement"
+                    name="requirement"
+                    rows="8"
+                    minlength="10"
+                    placeholder="请输入需要分析的软件需求……"
+                    required
+                >用户使用手机号和密码登录。手机号必须为11位数字。用户连续5次输入错误密码后，账号锁定30分钟。</textarea>
+
+                <button id="generate-button" type="submit">
+                    分析需求并生成测试用例
+                </button>
+            </form>
+
+            <p id="status" class="status"></p>
+        </section>
+        <section class="history-panel">
+    <div class="history-heading">
+        <div>
+            <p class="history-label">HISTORY</p>
+            <h2>最近分析记录</h2>
+        </div>
+
+        <button
+            id="refresh-history-button"
+            class="refresh-history-button"
+            type="button"
+        >
+            刷新记录
+        </button>
+    </div>
+
+    <p id="history-status" class="history-status">
+        正在读取历史记录……
+    </p>
+
+    <div
+        id="history-list"
+        class="history-list"
+    ></div>
+</section>
+
+       <section
+    id="result-panel"
+    class="result-panel"
+    hidden
+>
+    <div class="result-heading">
+    <h2>分析结果</h2>
+
+    <div class="result-actions">
+        <span id="case-count" class="case-count"></span>
+
+        <button
+            id="export-button"
+            class="export-button"
+            type="button"
+        >
+            导出 Excel
+        </button>
+    </div>
+</div>
+
+    <section class="summary-card">
+        <h3>需求概要</h3>
+        <p id="requirement-summary"></p>
+    </section>
+
+    <div class="analysis-grid">
+        <section class="analysis-card">
+            <h3>需求点</h3>
+            <ul id="requirement-points"></ul>
+        </section>
+
+        <section class="analysis-card warning-card">
+            <h3>待确认的歧义</h3>
+            <ul id="ambiguities"></ul>
+        </section>
+
+        <section class="analysis-card">
+            <h3>生成时使用的假设</h3>
+            <ul id="assumptions"></ul>
+        </section>
+    </div>
+
+    <section class="test-cases-section">
+        <h3>测试用例</h3>
+        <div id="test-cases" class="test-cases"></div>
+    </section>
+</section>
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
