@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 from sqlalchemy import DateTime, Integer, String, Text, create_engine
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, sessionmaker
@@ -18,7 +18,12 @@ SessionLocal = sessionmaker(
     autoflush=False,
     expire_on_commit=False,
 )
+def utc_now() -> datetime:
+    """返回适合 SQLite 保存的 UTC 时间。"""
 
+    return datetime.now(
+        timezone.utc
+    ).replace(tzinfo=None)
 
 class Base(DeclarativeBase):
     """所有数据库表模型的基础类。"""
@@ -59,7 +64,7 @@ class AnalysisHistory(Base):
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime,
-        default=datetime.now,
+        default=utc_now,
         nullable=False,
     )
 

@@ -1,5 +1,5 @@
 from pathlib import Path
-
+from datetime import timezone
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
@@ -193,7 +193,9 @@ def get_history() -> list[HistoryListItem]:
                 requirement=record.requirement,
                 requirement_summary=record.requirement_summary,
                 test_case_count=record.test_case_count,
-                created_at=record.created_at,
+                created_at=record.created_at.replace(
+                    tzinfo=timezone.utc
+                ),
             )
             for record in records
         ]
@@ -229,6 +231,8 @@ def get_history_detail(
             requirement=record.requirement,
             requirement_summary=record.requirement_summary,
             test_case_count=record.test_case_count,
-            created_at=record.created_at,
+            created_at=record.created_at.replace(
+                tzinfo=timezone.utc
+            ),
             result=result,
         )
