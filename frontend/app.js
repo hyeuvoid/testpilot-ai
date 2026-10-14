@@ -399,10 +399,11 @@ function createHistoryItem(record) {
     const time = document.createElement("time");
     time.className = "history-item-time";
     time.textContent = new Date(
-        record.created_at
-    ).toLocaleString("zh-CN", {
-        hour12: false,
-    });
+    record.created_at
+).toLocaleString("zh-CN", {
+    timeZone: "Asia/Shanghai",
+    hour12: false,
+});
 
     top.append(title, time);
 
