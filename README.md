@@ -181,3 +181,11 @@ http://127.0.0.1:8001/docs
 - 增加 OCR 扫描文档识别
 - 将 SQLite 切换为 MySQL
 - 部署公开演示环境
+
+
+## 在线体验
+
+- 在线演示：https://testpilot-ai-uuhp.onrender.com
+- API 文档：https://testpilot-ai-uuhp.onrender.com/docs
+
+> 项目部署在 Render 免费实例上。长时间无人访问时服务会休眠，首次打开可能需要等待约一分钟。SQLite 历史记录可能在服务重启后重置。
