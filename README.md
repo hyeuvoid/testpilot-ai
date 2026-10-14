@@ -19,6 +19,20 @@
 - 历史结果查看与再次导出
 - FastAPI 在线接口文档
 
+## 界面展示
+
+### 需求输入与文档上传
+
+![需求输入与文档上传](docs/images/home.png)
+
+### AI 需求分析与测试用例
+
+![AI需求分析与测试用例](docs/images/analysis-result.png)
+
+### 历史记录
+
+![历史记录](docs/images/history.png)
+
 ## 技术栈
 
 ### 后端
